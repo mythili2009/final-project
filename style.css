@@ -1,0 +1,735 @@
+
+/* =================================
+   1. BASIC RESET AND GLOBAL STYLES
+================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --background: #f5f7ff;
+    --surface: #ffffff;
+    --text: #1b2440;
+    --muted: #737d98;
+    --line: #e6eaf4;
+    --primary: #6558e8;
+    --primary-dark: #5145cf;
+    --soft-purple: #f0efff;
+    --teal: #17a995;
+    --shadow: 0 18px 55px rgba(43, 52, 100, 0.08);
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 8% 4%,
+            rgba(101, 88, 232, 0.11),
+            transparent 27rem
+        ),
+        radial-gradient(
+            circle at 96% 22%,
+            rgba(23, 169, 149, 0.09),
+            transparent 24rem
+        ),
+        var(--background);
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =================================
+   2. HEADER SECTION
+================================= */
+
+.site-header {
+    width: min(1160px, calc(100% - 40px));
+    height: 82px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    color: var(--text);
+    text-decoration: none;
+
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 12px;
+
+    color: white;
+    background: linear-gradient(
+        135deg,
+        #8277ff,
+        #5549d6
+    );
+}
+
+.brand-accent {
+    color: var(--primary);
+}
+
+.header-note {
+    color: var(--muted);
+    font-size: 0.86rem;
+}
+
+
+/* =================================
+   3. MAIN CONTAINER
+================================= */
+
+.container {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto;
+}
+
+
+/* =================================
+   4. HERO SECTION
+================================= */
+
+.hero {
+    padding: 37px 0 28px;
+    text-align: center;
+}
+
+.eyebrow {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border: 1px solid #dfdcff;
+    border-radius: 99px;
+
+    color: var(--primary-dark);
+    background: rgba(255,255,255,.72);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.hero h1 {
+    margin: 17px 0 11px;
+
+    font-size: clamp(2.25rem, 5vw, 3.7rem);
+    line-height: 1.1;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+.hero > p {
+    max-width: 640px;
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+
+/* =================================
+   5. MAIN WORKSPACE
+================================= */
+
+.workspace {
+    display: grid;
+
+    grid-template-columns: 1.04fr .96fr;
+
+    align-items: start;
+    gap: 22px;
+
+    padding: 15px 0 24px;
+}
+
+.card {
+    border: 1px solid var(--line);
+    border-radius: 21px;
+
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.form-card {
+    padding: 24px;
+}
+
+
+/* =================================
+   6. CARD HEADINGS
+================================= */
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.card-heading h2 {
+    margin-bottom: 5px;
+
+    font-size: 1.15rem;
+    letter-spacing: -0.5px;
+}
+
+.card-heading p {
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.5;
+}
+
+.step-badge,
+.output-indicator {
+    flex-shrink: 0;
+
+    padding: 6px 9px;
+
+    border-radius: 99px;
+
+    color: var(--primary-dark);
+    background: var(--soft-purple);
+
+    font-size: 0.64rem;
+    font-weight: 800;
+}
+
+
+/* =================================
+   7. INPUT FIELDS
+================================= */
+
+.field {
+    margin-bottom: 17px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 7px;
+
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.required {
+    color: #e45d76;
+}
+
+.field input,
+.field textarea,
+.field select {
+    display: block;
+
+    width: 100%;
+
+    border: 1px solid #dfe4f0;
+    border-radius: 11px;
+
+    padding: 11px 12px;
+
+    outline: none;
+
+    color: var(--text);
+    background: #fcfcff;
+
+    transition: 0.2s;
+}
+
+.field input,
+.field select {
+    min-height: 44px;
+}
+
+.field textarea {
+    min-height: 76px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: #a0a8bb;
+}
+
+/* Input focus effect */
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+    border-color: var(--primary);
+
+    background: white;
+
+    box-shadow: 0 0 0 3px rgba(101, 88, 232, 0.11);
+}
+
+.field small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #929bb0;
+    font-size: 0.72rem;
+}
+
+
+/* =================================
+   8. BUTTON STYLES
+================================= */
+
+.button {
+    min-height: 43px;
+
+    border: none;
+    border-radius: 11px;
+
+    padding: 10px 15px;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.button:focus-visible,
+.sample-button:focus-visible {
+    outline: 3px solid rgba(101, 88, 232, 0.25);
+    outline-offset: 2px;
+}
+
+/* Generate Button */
+
+.button-primary {
+    color: white;
+
+    background: linear-gradient(
+        110deg,
+        #766bf2,
+        #5549d5
+    );
+
+    box-shadow: 0 9px 19px rgba(101, 88, 232, 0.22);
+}
+
+.button-primary:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 12px 23px rgba(101, 88, 232, 0.3);
+}
+
+.generate-button {
+    width: 100%;
+    margin-top: 2px;
+}
+
+
+/* =================================
+   9. RIGHT COLUMN
+================================= */
+
+.right-column {
+    display: grid;
+    gap: 18px;
+}
+
+
+/* =================================
+   10. OUTPUT SECTION
+================================= */
+
+.output-card {
+    padding: 24px;
+}
+
+.output-indicator {
+    color: #0b8b7d;
+    background: #e6faf6;
+}
+
+.output-indicator span {
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    margin-right: 4px;
+
+    border-radius: 50%;
+
+    background: #17b99f;
+}
+
+
+/* Output Box */
+
+.output-box {
+    min-height: 330px;
+
+    display: flex;
+
+    border: 1.5px dashed #d9deec;
+    border-radius: 14px;
+
+    background: #fafbff;
+
+    overflow: hidden;
+}
+
+
+/* Empty Output Message */
+
+.empty-state {
+    width: 100%;
+
+    align-self: center;
+
+    padding: 24px;
+
+    text-align: center;
+}
+
+.empty-icon {
+    width: 54px;
+    height: 54px;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 13px;
+
+    border-radius: 17px;
+
+    color: var(--primary);
+    background: var(--soft-purple);
+
+    font-size: 1.65rem;
+}
+
+.empty-state h3 {
+    margin-bottom: 7px;
+    font-size: 0.98rem;
+}
+
+.empty-state p {
+    max-width: 270px;
+    margin: 0 auto;
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
+
+/* Generated Prompt */
+
+.generated-prompt {
+    width: 100%;
+
+    max-height: 470px;
+
+    margin: 0;
+    padding: 17px;
+
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    color: #35405e;
+
+    font-family: Arial, sans-serif;
+    font-size: 0.84rem;
+    line-height: 1.75;
+}
+
+
+/* =================================
+   11. COPY AND CLEAR BUTTONS
+================================= */
+
+.output-actions {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 13px;
+}
+
+.button-secondary {
+    flex: 1;
+
+    border: 1px solid #dfe3ef;
+
+    color: var(--primary-dark);
+    background: #f8f7ff;
+}
+
+.button-secondary:hover {
+    background: #eeedff;
+}
+
+.button-ghost {
+    min-width: 94px;
+
+    border: 1px solid #e3e7f0;
+
+    color: #68728b;
+    background: white;
+}
+
+.button-ghost:hover {
+    background: #f7f8fc;
+}
+
+.copy-message {
+    min-height: 17px;
+
+    margin-top: 7px;
+
+    color: #0c8b7b;
+    font-size: 0.75rem;
+}
+
+
+/* =================================
+   12. SAMPLE PROMPT SECTION
+================================= */
+
+.sample-card {
+    padding: 19px 21px;
+
+    border: 1px solid #e4e2ff;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        135deg,
+        #f5f4ff,
+        #fbfbff
+    );
+}
+
+.sample-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.sample-icon {
+    width: 30px;
+    height: 30px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    color: var(--primary);
+    background: white;
+}
+
+.sample-title h3 {
+    font-size: 0.91rem;
+}
+
+.sample-description {
+    margin: 8px 0 10px;
+
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.sample-text {
+    padding: 12px;
+
+    border: 1px solid #e9e7ff;
+    border-radius: 10px;
+
+    color: #525d7a;
+    background: rgba(255,255,255,.8);
+
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
+.sample-button {
+    margin-top: 11px;
+
+    padding: 0;
+
+    border: none;
+
+    color: var(--primary-dark);
+    background: transparent;
+
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.sample-button:hover {
+    text-decoration: underline;
+}
+
+
+/* =================================
+   13. PROMPT TIP SECTION
+================================= */
+
+.tips {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 35px;
+    padding: 13px 16px;
+
+    border: 1px solid #d8f1ec;
+    border-radius: 13px;
+
+    background: #effbf8;
+}
+
+.tips-icon {
+    font-size: 1.15rem;
+}
+
+.tips p {
+    color: #58736e;
+    font-size: 0.79rem;
+    line-height: 1.55;
+}
+
+.tips strong {
+    color: #147d70;
+}
+
+
+/* =================================
+   14. FOOTER
+================================= */
+
+footer {
+    padding: 0 20px 25px;
+
+    color: #929bb0;
+
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+footer span {
+    padding: 0 5px;
+    color: var(--primary);
+}
+
+
+/* =================================
+   15. TABLET RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 850px) {
+
+    .workspace {
+        grid-template-columns: 1fr;
+    }
+
+    .right-column {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+    }
+
+    .output-card,
+    .sample-card {
+        min-width: 0;
+    }
+}
+
+
+/* =================================
+   16. MOBILE RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 620px) {
+
+    .site-header {
+        height: 70px;
+    }
+
+    .header-note {
+        display: none;
+    }
+
+    .container {
+        width: min(100% - 24px, 1100px);
+    }
+
+    .hero {
+        padding: 28px 0 19px;
+    }
+
+    .hero > p {
+        font-size: 0.9rem;
+    }
+
+    .workspace {
+        gap: 15px;
+        padding-top: 10px;
+    }
+
+    .form-card,
+    .output-card {
+        padding: 18px;
+    }
+
+    .right-column {
+        grid-template-columns: 1fr;
+    }
+
+    .output-box {
+        min-height: 270px;
+    }
+
+    .card-heading {
+        margin-bottom: 18px;
+    }
+
+    .step-badge {
+        font-size: 0.57rem;
+    }
+}

@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PromptCraft | AI Prompt Generator</title>
+
+    <!-- Connect CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <a class="brand" href="#">
+            <span class="brand-icon">✦</span>
+            <span>Prompt<span class="brand-accent">Craft</span></span>
+        </a>
+
+        <span class="header-note">A better way to ask AI</span>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="eyebrow">MADE FOR COLLEGE STUDENTS</span>
+
+            <h1>
+                Turn your ideas into
+                <span>better prompts.</span>
+            </h1>
+
+            <p>
+                Describe what you need, add a little context,
+                and create a clear prompt you can use with
+                your favourite AI tool.
+            </p>
+        </section>
+
+        <!-- Main Application -->
+        <section class="workspace">
+
+            <!-- Input Form -->
+            <form class="card form-card" id="promptForm">
+
+                <div class="card-heading">
+                    <div>
+                        <h2>Build your prompt</h2>
+                        <p>Complete the fields below to get started.</p>
+                    </div>
+
+                    <span class="step-badge">01 / CREATE</span>
+                </div>
+
+                <!-- Role -->
+                <div class="field">
+                    <label for="role">
+                        Role <span class="required">*</span>
+                    </label>
+
+                    <input
+                        id="role"
+                        name="role"
+                        type="text"
+                        placeholder="e.g. Act as a friendly computer science tutor"
+                        required
+                    >
+
+                    <small>Who should the AI act as?</small>
+                </div>
+
+                <!-- Task -->
+                <div class="field">
+                    <label for="task">
+                        Task <span class="required">*</span>
+                    </label>
+
+                    <textarea
+                        id="task"
+                        name="task"
+                        rows="3"
+                        placeholder="e.g. Explain the basics of cloud computing"
+                        required
+                    ></textarea>
+
+                    <small>What do you want the AI to do?</small>
+                </div>
+
+                <!-- Context -->
+                <div class="field">
+                    <label for="context">Context</label>
+
+                    <textarea
+                        id="context"
+                        name="context"
+                        rows="3"
+                        placeholder="e.g. I am a first-year IT student with no prior experience."
+                    ></textarea>
+
+                    <small>
+                        Share useful background information or your learning level.
+                    </small>
+                </div>
+
+                <!-- Constraints -->
+                <div class="field">
+                    <label for="constraints">Constraints</label>
+
+                    <textarea
+                        id="constraints"
+                        name="constraints"
+                        rows="3"
+                        placeholder="e.g. Use simple English, keep it under 300 words, include two examples."
+                    ></textarea>
+
+                    <small>
+                        Add limits or special instructions the AI should follow.
+                    </small>
+                </div>
+
+                <!-- Output Format -->
+                <div class="field">
+                    <label for="format">
+                        Output Format <span class="required">*</span>
+                    </label>
+
+                    <select id="format" name="format" required>
+
+                        <option value="">Choose an output format</option>
+
+                        <option>Bullet points</option>
+
+                        <option>Step-by-step explanation</option>
+
+                        <option>Short paragraphs</option>
+
+                        <option>Table</option>
+
+                        <option>Study notes</option>
+
+                        <option>Quiz with answers</option>
+
+                        <option>Code with comments</option>
+
+                        <option>Presentation outline</option>
+
+                    </select>
+                </div>
+
+                <!-- Generate Button -->
+                <button
+                    class="button button-primary generate-button"
+                    type="submit"
+                >
+                    ✦ Generate Prompt
+                </button>
+
+            </form>
+
+            <!-- Output Section -->
+            <aside class="right-column">
+
+                <section class="card output-card">
+
+                    <div class="card-heading">
+                        <div>
+                            <h2>Your Generated Prompt</h2>
+
+                            <p>Your prompt will appear in this box.</p>
+                        </div>
+
+                        <span class="output-indicator">
+                            OUTPUT
+                        </span>
+                    </div>
+
+                    <!-- Output Box -->
+                    <div class="output-box" id="outputBox">
+
+                        <div class="empty-state" id="emptyState">
+
+                            <div class="empty-icon">✧</div>
+
+                            <h3>Ready when you are</h3>
+
+                            <p>
+                                Fill in the form and select
+                                <strong>Generate Prompt</strong>.
+                                Your prompt will appear here.
+                            </p>
+
+                        </div>
+
+                        <pre
+                            id="generatedPrompt"
+                            class="generated-prompt"
+                            hidden
+                        ></pre>
+
+                    </div>
+
+                    <!-- Copy and Clear Buttons -->
+                    <div class="output-actions">
+
+                        <button
+                            class="button button-secondary"
+                            id="copyButton"
+                            type="button"
+                        >
+                            ▣ Copy Prompt
+                        </button>
+
+                        <button
+                            class="button button-ghost"
+                            id="clearButton"
+                            type="button"
+                        >
+                            Clear
+                        </button>
+
+                    </div>
+
+                    <p
+                        class="copy-message"
+                        id="copyMessage"
+                        role="status"
+                    ></p>
+
+                </section>
+
+                <!-- Sample Prompt -->
+                <section class="sample-card">
+
+                    <div class="sample-title">
+
+                        <span class="sample-icon">✎</span>
+
+                        <h3>Sample Prompt</h3>
+
+                    </div>
+
+                    <p class="sample-description">
+                        Here is an example of a clear, detailed prompt.
+                    </p>
+
+                    <div class="sample-text">
+
+                        Act as a friendly computer science tutor.
+                        Explain cloud computing to a first-year
+                        college student who is new to the topic.
+
+                        Use simple English, give two real-life
+                        examples, and list three key benefits.
+
+                        Present the answer using clear bullet points.
+
+                    </div>
+
+                    <button
+                        class="sample-button"
+                        id="useSampleButton"
+                        type="button"
+                    >
+                        Use this sample →
+                    </button>
+
+                </section>
+
+            </aside>
+
+        </section>
+
+        <!-- Prompt Tip -->
+        <section class="tips">
+
+            <span class="tips-icon">💡</span>
+
+            <p>
+                <strong>Prompt Tip:</strong>
+
+                A useful prompt tells the AI its role,
+                the task, relevant context, any constraints,
+                and the format you want.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        PromptCraft · Learn better. Ask better. Create better.
+    </footer>
+
+    <!-- Connect JavaScript file -->
+    <script src="script.js"></script>
+
+</body>
+</html>
